@@ -16,11 +16,9 @@ Kubernetes Engine. It’s **easy to deploy with little to no configuration**.
 
 If you’re using this demo, please **★Star** this repository to show your interest!
 
-> 👓**Note to Googlers:** Please fill out the form at
-> [go/microservices-demo](http://go/microservices-demo) if you are using this
-> application.
-
-Looking for the old Hipster Shop frontend interface? Use the [manifests](https://github.com/GoogleCloudPlatform/microservices-demo/tree/v0.1.5/kubernetes-manifests) in release [v0.1.5](https://github.com/GoogleCloudPlatform/microservices-demo/releases/v0.1.5).
+## Tracing Module
+We instrument OpenTelemetry API for each service to equip tracing ability for Hipster-Shop.
+[![trace result](./docs/img/tracing.png)](./docs/img/tracing.png)
 
 ## Screenshots
 
