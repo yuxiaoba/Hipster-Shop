@@ -1,0 +1,65 @@
+# Copyright 2018 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  # image tags are relative; to specify an image repo (e.g. GCR), you
+  # must provide a "default repo" using one of the methods described 
+  # here:
+  # https://skaffold.dev/docs/concepts/#image-repository-handling
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/emailservice
+    context: src/emailservice
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/productcatalogservice
+    context: src/productcatalogservice
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/recommendationservice
+    context: src/recommendationservice
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/shippingservice
+    context: src/shippingservice
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/checkoutservice
+    context: src/checkoutservice
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/paymentservice
+    context: src/paymentservice
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/currencyservice
+    context: src/currencyservice
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/cartservice
+    context: src/cartservice
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/frontend
+    context: src/frontend
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/loadgenerator
+    context: src/loadgenerator
+  - image: registry.cn-hangzhou.aliyuncs.com/pnut/testbed/adservice
+    context: src/adservice
+  tagPolicy:
+    gitCommit: {}
+deploy:
+  kubectl:
+    manifests:
+    - ./kubernetes-manifests/**.yaml
+profiles:
+# "gcb" profile allows building and pushing the images
+# on Google Container Builder without requiring docker
+# installed on the developer machine. However, note that
+# since GCB does not cache the builds, each build will
+# start from scratch and therefore take a long time.
+#
+# This is not used by default. To use it, run:
+#     skaffold run -p gcb
+- name: gcb
+  build:
+    googleCloudBuild:
+      diskSizeGb: 300
+      machineType: N1_HIGHCPU_32
+      timeout: 4000s
