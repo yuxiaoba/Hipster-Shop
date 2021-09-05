@@ -1,0 +1,44 @@
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: jaeger
+  namespace: hipster
+spec:
+  strategy: streaming
+  agent:
+    strategy: DaemonSet
+  sampling:
+    options:
+      default_strategy:
+        type: probabilistic
+        param: 10
+  collector:
+    options:
+      kafka: 
+        producer:
+          topic: jaeger-spans
+          brokers: kafka-kafka-external-bootstrap.kafka:9094
+  ingester:
+    options:
+      kafka:
+        consumer:
+          topic: jaeger-spans
+          brokers: kafka-kafka-external-bootstrap.kafka:9094
+      ingester:
+        deadlockInterval: 0 
+  storage:
+    type: elasticsearch
+    esIndexCleaner:
+      enabled: false
+    options:
+      es:
+        server-urls:  http://33.33.33.22:9200 #,http://33.33.33.23:9200,http://33.33.33.24:9200
+  affinity:
+    nodeAffinity:
+      required:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - 33.33.33.241

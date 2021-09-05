@@ -1,10 +1,7 @@
-# ./kubernetes-manifests
+# Deploy kafka
 
-We export trace to Jaeger, then the trace will be persitent in ElasticSearch through Kafak
-
-## Deploy Kafka 
+## Install
 ```
-$ cd kafka
 $ kubectl create namespace kafka
 $ kubectl apply -f operator.yaml  
 $ kubectl get pod -n kafka --watch
@@ -37,27 +34,5 @@ $ kubectl get svc -n kafka
 kubectl patch  persistentvolume data-kafka-0   -p '{"metadata":{"finalizers":null}}'
 kubectl patch  persistentvolume data-kafka-zookeeper-0   -p '{"metadata":{"finalizers":null}}'
 
-``` 
 
-## Deploy Jaeger
-```
-$ cd jaeger
-$ kubectl create namespace observability
-
-$ kubectl create -f  jaegertracing.io_jaegers_crd.yaml
-$ kubectl create -n observability -f service_account.yaml
-$ kubectl create -n observability -f role.yaml
-$ kubectl create -n observability -f role_binding.yaml
-$ kubectl create -n observability -f operator.yaml
-
-$ kubectl create -f cluster_role.yaml
-$ kubectl create -f cluster_role_binding.yaml
-
-$ kubectl create -f jaeger-steaming.yaml
-
-```
-
-## Deploy service 
-```
-$ kubectl create -f ./.
 ```
