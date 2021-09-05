@@ -1,0 +1,16 @@
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: jaeger
+  namespace: hipster
+spec:
+  strategy: streaming
+  agent:
+    strategy: DaemonSet
+  sampling:
+    options:
+      default_strategy:
+        type: probabilistic
+        param: 100
+  ingester:
+    maxReplicas: 8
