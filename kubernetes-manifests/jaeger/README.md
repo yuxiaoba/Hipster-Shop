@@ -14,5 +14,9 @@ $ kubectl create -n observability -f operator.yaml
 $ kubectl create -f cluster_role.yaml
 $ kubectl create -f cluster_role_binding.yaml
 
+// install in simple way 
+$ kubectl create -f jaeger-steaming-without-kafka.yaml
+
+// install with kafka
 $ kubectl create -f jaeger-steaming.yaml
 ```
