@@ -20,10 +20,28 @@ If you’re using this demo, please **★Star** this repository to show your int
 We instrument OpenTelemetry API for each service to equip tracing ability for Hipster-Shop.
 [![trace result](./docs/img/tracing.png)](./docs/img/tracing.png)
 
+You can deploy this new benchmark follow the files in [kubernetes-manifests](./kubernetes-manifests/README.md)
+
+Please cite our paper if you find this work is helpful.
+```
+@inbook{microrank,
+author = {Yu, Guangba and Chen, Pengfei and Chen, Hongyang and Guan, Zijie and Huang, Zicheng and Jing, Linxiao and Weng, Tianjun and Sun, Xinmeng and Li, Xiaoyun},
+title = {MicroRank: End-to-End Latency Issue Localization with Extended Spectrum Analysis in Microservice Environments},
+year = {2021},
+isbn = {9781450383127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3442381.3449905},
+booktitle = {Proceedings of the Web Conference 2021},
+pages = {3087–3098},
+numpages = {12}
+}
+```
+
 ## Screenshots
 
-| Home Page                                                                                                         | Checkout Screen                                                                                                    |
-| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Home Page                                                                                                               | Checkout Screen                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | [![Screenshot of store homepage](./docs/img/online-boutique-frontend-1.png)](./docs/img/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](./docs/img/online-boutique-frontend-2.png)](./docs/img/online-boutique-frontend-2.png) |
 
 ## Service Architecture
