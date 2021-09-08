@@ -4,9 +4,11 @@ metadata:
   name: jaeger
   namespace: hipster
 spec:
-  strategy: streaming
+  strategy: production
   agent:
     strategy: DaemonSet
+  collector:
+    maxReplicas: 5
   query:
     serviceType: NodePort
   sampling:
