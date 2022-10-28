@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: registry.cn-shenzhen.aliyuncs.com/trainticket/hipster-frontend:opentelemetry2
+          image: registry.cn-shenzhen.aliyuncs.com/trainticket/hipster-frontend:testbed
           ports:
             - containerPort: 8080
           #readinessProbe:
