@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: registry.cn-shenzhen.aliyuncs.com/trainticket/hipster-shippingservice:opentelemetry2
+        image: registry.cn-shenzhen.aliyuncs.com/trainticket/hipster-shippingservice:testbed
         ports:
         - containerPort: 50051
         env:
