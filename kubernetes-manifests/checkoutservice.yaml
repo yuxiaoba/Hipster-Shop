@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: registry.cn-shenzhen.aliyuncs.com/trainticket/hipster-checkoutservice:opentelemetry2
+          image: registry.cn-shenzhen.aliyuncs.com/trainticket/hipster-checkoutservice:testbed
           imagePullPolicy: Always
           ports:
           - containerPort: 5050
